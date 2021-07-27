@@ -29,14 +29,14 @@ public class UserController {
 	@Autowired
 	private UserService userService;
 	
-	//create a new user
+	
 	@PostMapping
 	public ResponseEntity<?> create (@RequestBody User user){
 		
 		return ResponseEntity.status(HttpStatus.CREATED).body(userService.save(user));
 	}
 	
-	//read a user
+	
 	@GetMapping("/{id}")
 	public ResponseEntity<?> read (@PathVariable(value = "id") Long userId){
 		Optional<User> oUser = userService.findById(userId);
@@ -48,7 +48,7 @@ public class UserController {
 		return ResponseEntity.ok(oUser);
 	}
 	
-	//update an user
+	
 	@PutMapping("/{id}")
 	public ResponseEntity<?> update (@RequestBody User userDetails,@PathVariable(value = "id") Long userId){
 		Optional<User> user = userService.findById(userId);
@@ -65,7 +65,7 @@ public class UserController {
 		return ResponseEntity.status(HttpStatus.CREATED).body(userService.save(user.get()));
 	}
 	
-	//delete an user
+	
 	@DeleteMapping("/{id}")
 	public ResponseEntity<?> delete (@PathVariable(value = "id") Long userId){
 		
@@ -76,7 +76,7 @@ public class UserController {
 		return ResponseEntity.ok().build();
 	}
 	
-	//read all users
+	
 	@GetMapping
 	public List<User> readAll () {
 		List<User> users = StreamSupport
